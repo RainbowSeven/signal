@@ -1,6 +1,6 @@
-SIGNAL 🔔
+🔔 SIGNAL
 =========
-A Chrome extension that carries out browser actions at scheduled times.
+A Chrome browser extension that carries out browser actions at scheduled times.
 
 
 LICENSE
