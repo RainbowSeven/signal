@@ -1,0 +1,12 @@
+@import 'https://fonts.googleapis.com/css?family=Pacifico';
+
+h1 {
+    font-family: "Pacifico";
+}
+
+.content {
+    width: 300px;
+}
+body {
+    background-color: #f1f1f1;
+}
