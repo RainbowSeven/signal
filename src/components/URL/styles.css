@@ -1,0 +1,25 @@
+.bar {
+  margin-top: 35px;
+  background-color: #3F4E58;
+  border: 1px solid #95989A;
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 40px;
+  color: #EBEBEB;
+  font-size: 1.2rem;
+} 
+
+.bar--raised {
+  margin-top: -15px;
+  margin-bottom: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  background: #FFFFFF;
+  color: #95989A;
+  border: 1px solid #95989A;
+}
+.bar--label {
+  padding-right: 15px;
+  padding-left: 15px;
+  border-right: 1px solid #95989A;
+}

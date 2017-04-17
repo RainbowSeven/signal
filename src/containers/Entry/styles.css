@@ -1,0 +1,43 @@
+.entry--field {
+  font-size: 1.4em;
+  min-width: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.entry--field label {
+  display: block;
+}
+
+.entry {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.entry--btn {
+  background-color: #3398DB;
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.entry--btn:hover {
+  cursor: pointer;
+  background-color: #40a9ef;
+  box-shadow: 1px 0 1px #3398DB;
+}
+
+.entry--btn {
+  line-height: 40px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.entry--field label {
+  font-weight: 900;
+  line-height: 1.8;
+}
+.entry--field select, .entry--field input {
+  height: 40px;
+  font-size: 1.2rem;
+  border: 1px solid #3398DB;
+  font-weight: 300;
+}
