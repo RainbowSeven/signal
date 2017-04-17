@@ -4,7 +4,8 @@ body {
     font-size: 10px;
 }
 .box {
-    width: 300px;
+    width: 350px;
+    margin-bottom: 35px;
 }
 .text--normal {
     font-family: Arial, "Helvetica", sans-serif;
