@@ -1,14 +1,15 @@
 import React from 'react';
 
-export default ({name, title, type}) => (
+export default ({name, title, type, onChange}) => (
   <div className="entry--field">
     <label 
-      for={name}>
+      htmlFor={name}>
       {title}
     </label>
     <input 
       type={type}
       name={name}
+      onChange={onChange}
     />
   </div>
 );

@@ -1,9 +1,12 @@
 import React from 'react';
 
-export default ({options, title, name}) => (
+export default ({options, title, name, onChange}) => (
   <div className="entry--field">
-    <label>{title}</label>
-    <select name={name}>
+    <label htmlFor={name}>{title}</label>
+    <select 
+      name={name}
+      onChange={onChange}
+    >
       {
         options.map(
           (opt, i) => (
