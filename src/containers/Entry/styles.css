@@ -31,11 +31,11 @@
   padding-right: 15px;
   padding-left: 15px;
 }
-.entry--field label {
+.entry--field > label {
   font-weight: 900;
   line-height: 1.8;
 }
-.entry--field select, .entry--field input {
+.entry--field > select, .entry--field > input {
   height: 40px;
   font-size: 1.2rem;
   border: 1px solid #3398DB;
