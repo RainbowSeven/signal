@@ -7,7 +7,7 @@ import URL from 'components/URL';
 
 import styles from './styles.css';
 
-const days = [
+const DAYS = [
   'Sunday',
   'Monday',
   'Tuesday',
@@ -17,13 +17,15 @@ const days = [
   'Saturday',
 ];
 
+const DEFAULT_RECURRENCE = 'Sunday';
+
 
 class Entry extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       address: '',
-      every: 'Sunday',
+      every: DEFAULT_RECURRENCE,
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -31,16 +33,11 @@ class Entry extends React.Component {
   }
 
   componentWillMount() {
+    if(!chrome.tabs) return;
     chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
       if (tabs.length) {
         this.setState({address: tabs[0].url});
       }
-    });
-
-    chrome.alarms.onAlarm.addListener((alarm) => {
-      chrome.tabs.create({url: alarm.name}, tab => {
-        // TODO: track tab id.
-      });
     });
   }
 
@@ -70,7 +67,7 @@ class Entry extends React.Component {
 
     // TODO: refine this walkthrough.
     let increment = 0; 
-    let userDayIndex = days.indexOf(every);
+    let userDayIndex = DAYS.indexOf(every);
     let nowDayIndex = nowDate.getDay();
 
     if (nowDayIndex !== userDayIndex) {
@@ -89,11 +86,18 @@ class Entry extends React.Component {
     when = new Date(Date.UTC(year, month-UTCMonthOffset, parseInt(day)+increment, parseInt(hour)+timezoneOffset, minute));
 
     const alarmInfo = {
-      when,
+      when: when.getTime(),
       periodInMinutes: 7 * 24 * 60,
-    }
+    };
 
-    chrome.alarms.create(address, alarmInfo);
+    chrome.runtime.sendMessage({
+      alarmInfo: alarmInfo,
+      address: address,
+      type: "KEEP_TAB",
+    }, (response) => {
+      console.log(response.status);
+    });
+
     event.preventDefault();
   }
 
@@ -112,14 +116,16 @@ class Entry extends React.Component {
             required
             type="time"
             placeholder="08:15"
+            required={true}
             onChange={this.handleChange}
           />
           <Select 
             name="every"
             title="Every"
-            options={days}
-            required
+            options={DAYS}
+            required={true}
             onChange={this.handleChange}
+            defaultValue={DEFAULT_RECURRENCE}
           />
           <Button 
             title="Keep Tab"
