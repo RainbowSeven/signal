@@ -1,9 +1,12 @@
 {
   "manifest_version": 2,
-
   "name": "Signal",
   "description": "Schedule a URL to open at a future time ",
   "version": "0.0.1",
+  "background": {
+    "scripts" : ["job.js"],
+    "persistent": true
+  },
   "browser_action": {
     "default_icon": "icon.png",
     "default_title": "Signal",
